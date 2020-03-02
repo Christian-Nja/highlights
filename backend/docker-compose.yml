@@ -1,0 +1,62 @@
+version : '3'
+
+services:
+    rst-service:
+        #build: ./rst-service # path is relative to docker-compose.yml location 
+        # build: https://github.com/Christian-Nja/R2R.git 
+        image: r2r_rst-service
+        volumes:
+            - ./rst-service:/usr/src/rst-service-api # mount point
+        ports:
+            - "5050" # host:container
+        depends_on:
+            - feng
+            - converter
+        networks:
+            - net
+
+    feng:
+        # build: ./feng-hirst-service
+        image: feng-hirst-service
+        expose:
+            - "8080"
+        networks:
+            net:
+                aliases:
+                    - feng
+                         
+    converter:
+        # build: ./rst-converter-service
+        image: rst-converter-service
+        expose:
+            - "5000"
+        networks:
+            net:
+                aliases:
+                    - converter 
+                    - conv
+        
+    react-frontend:
+        build: ./react-frontend
+        volumes:
+            - static:/usr/src/react-frontend/build
+                
+    nginx:
+        image: nginx:latest
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./default.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - rst-service
+            - react-frontend
+        volumes:
+            - static:/srv/www/static
+        networks:
+            net:
+
+networks:
+    net:
+
+volumes:
+    static:

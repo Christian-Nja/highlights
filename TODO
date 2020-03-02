@@ -1,0 +1,4 @@
+- ADD saliency extraction to rst-service.
+- make react frontend and packaged it
+- make nginx serve that frontend!
+- copy rst-services dependencies in this project
