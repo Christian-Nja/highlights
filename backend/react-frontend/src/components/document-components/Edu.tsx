@@ -1,15 +1,26 @@
 import * as React from "react";
+import Word from "./Word";
 
 export interface EduProps {
-  title: string;
+  score: any;
+  color: any;
+  text: [];
 }
 
-export default class Edu extends React.Component<EduProps> {
+export interface EduState {}
+
+export default class Edu extends React.Component<EduProps, EduState> {
   constructor(props: Readonly<EduProps>) {
     super(props);
   }
 
   render = () => {
-    return <div></div>;
+    return (
+      <div>
+        {this.props.text.map((word, index) => {
+          return <Word word={word} key={index}></Word>;
+        })}
+      </div>
+    );
   };
 }

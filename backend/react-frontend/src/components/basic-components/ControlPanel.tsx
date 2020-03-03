@@ -5,9 +5,9 @@
 
 import * as React from "react";
 
-import axios from "axios";
-
-export interface ControlPanelProps {}
+export interface ControlPanelProps {
+  handleTextAreaClick: (text: string) => void;
+}
 
 export interface ControlPanelState {
   text: string;
@@ -32,37 +32,17 @@ export default class ControlPanel extends React.Component<
           value={this.state.text}
           onChange={this.handleTextChange}
         ></textarea>
-        <button className="button" onClick={this.handleClick}>
+        <button
+          className="button"
+          onClick={() => this.props.handleTextAreaClick(this.state.text)}
+        >
           Parse
         </button>
       </div>
     );
   };
 
-  /**
-   * Function check if a document file is loaded or text is written and in positive case
-   * calls parseDocument
-   */
-  handleClick = (): void => {
-    this.axiosGetTest();
-  };
-
-  /**
-   * Function sends request to rst-service microservice to extract saliency.
-   */
-  parseDocument = (): void => {};
-
   handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void => {
     this.setState({ text: event.target.value });
-  };
-
-  axiosGetTest = (): void => {
-    axios({
-      method: "get",
-      url: "http://localhost:8282/test",
-      responseType: "stream"
-    }).then(function(response: any) {
-      console.log(response);
-    });
   };
 }

@@ -10,19 +10,41 @@
 
 #textInput {
   resize: none;
-  width: 30%;
-  height: 200px;
+  width: 300px;
+  height: 400px;
   margin-left: 5%;
-  margin-top: 3%;
+  margin-top: 30px;
   padding: 1%;
+  padding-left: 3%;
   border-radius: 5%;
   font-family: "Open Sans", sans-serif;
-  font-size: 17px;
-  letter-spacing: 2px;
+  font-size: 15px;
+  letter-spacing: 1.2px;
+}
+
+#documentContainer {
+  margin-top: 30px;
+  margin-right: 5%;
 }
 
 #textInput:focus {
   border-color: blue;
+}
+
+.button {
+  width: 100px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  padding-bottom: 20px;
+  border-radius: 8%;
+}
+
+.img {
+  max-width: 600px;
+  height: auto;
+  border-radius: 2%;
 }
 
 /* generics : { flex , ... } */
@@ -32,10 +54,8 @@
   flex-direction: column;
 }
 
-.button {
-  width: 100px;
-  height: 20px;
-  margin-left: 7%;
-  margin-top: 2%;
-  padding-bottom: 20px;
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

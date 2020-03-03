@@ -18,6 +18,12 @@ module.exports = {
         exclude: /node_modules/,
         use: ["style-loader", "css-loader"]
       },
+       {
+         test: /\.(png|svg|jpg|gif|jpeg)$/,
+         use: [
+           'file-loader',
+         ],
+       },
       {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
@@ -43,6 +49,7 @@ module.exports = {
   externals: {
     react: "React",
     "react-dom": "ReactDOM",
-    axios: "axios"
+    axios: "axios",
+    "fs" : "commonjs fs",
   }
 };

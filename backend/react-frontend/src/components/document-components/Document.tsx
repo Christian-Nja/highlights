@@ -1,25 +1,56 @@
-// pannellino in cui scrivere testo o inserire un file
-// (configurazioni opzionali) tasto processa
-
-// dei documenti che vengono sfogliati come spinner
-
-// testo colorato appare (
-//     conviene creare delle classi parole, e ad ogni parola un div, creando il testo come
-//     concatenazione di div così è possibile cliccare sulle parole e usare funzioni.
-// )
-
 import * as React from "react";
+import Edu from "./Edu";
+
+const docImg = require("../../img/documenti.jpeg");
 
 export interface DocumentProps {
-  title: string;
+  document: {
+    edus: [
+      {
+        score: any;
+        color: any;
+        text: any;
+      }
+    ];
+  };
 }
+export interface DocumentState {}
 
-export default class Document extends React.Component<DocumentProps> {
+export default class Document extends React.Component<
+  DocumentProps,
+  DocumentState
+> {
   constructor(props: Readonly<DocumentProps>) {
     super(props);
   }
 
   render = () => {
-    return <div></div>;
+    console.log(JSON.stringify(this.props.document).length);
+    return (
+      <div id="documentContainer">
+        {JSON.stringify(this.props.document).length !== 2 ? (
+          <div>
+            {this.props.document.edus.map((edu, index) => {
+              return (
+                <Edu
+                  key={index}
+                  score={edu.score}
+                  color={edu.color}
+                  text={edu.text}
+                ></Edu>
+              );
+            })}
+          </div>
+        ) : (
+          <div>
+            <img
+              className={"img"}
+              src={docImg.default}
+              alt="documents sheets fogli scrivania deck"
+            />
+          </div>
+        )}
+      </div>
+    );
   };
 }

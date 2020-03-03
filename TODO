@@ -1,5 +1,7 @@
 - ADD saliency extraction to rst-service.
 
+react -> list-rendering -> render edu and assign color -> for every edu render words
+
 - link nginx volume to local file system to avoid rebuild, recompiling
 
 

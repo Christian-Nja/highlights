@@ -1,0 +1,4 @@
+add libraries to webpack:
+
+npm install library
+add it to webpack externals

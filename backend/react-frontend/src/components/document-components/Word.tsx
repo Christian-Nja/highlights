@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export interface WordProps {
-  title: string;
+  word: any;
 }
 
 export default class Word extends React.Component<WordProps> {
@@ -10,6 +10,6 @@ export default class Word extends React.Component<WordProps> {
   }
 
   render = () => {
-    return <div></div>;
+    return <p>{this.props.word}</p>;
   };
 }
