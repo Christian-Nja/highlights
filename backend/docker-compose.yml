@@ -2,9 +2,9 @@ version : '3'
 
 services:
     rst-service:
-        #build: ./rst-service # path is relative to docker-compose.yml location 
+        build: ./rst-service # path is relative to docker-compose.yml location 
         # build: https://github.com/Christian-Nja/R2R.git 
-        image: r2r_rst-service
+        #image: r2r_rst-service
         volumes:
             - ./rst-service:/usr/src/rst-service-api # mount point
         ports:
@@ -16,8 +16,8 @@ services:
             - net
 
     feng:
-        # build: ./feng-hirst-service
-        image: feng-hirst-service
+        build: ./feng-hirst-service
+        #image: feng-hirst-service
         expose:
             - "8080"
         networks:
@@ -26,8 +26,8 @@ services:
                     - feng
                          
     converter:
-        # build: ./rst-converter-service
-        image: rst-converter-service
+        build: ./rst-converter-service
+        #image: rst-converter-service
         expose:
             - "5000"
         networks:

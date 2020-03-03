@@ -1,4 +1,11 @@
 - ADD saliency extraction to rst-service.
-- make react frontend and packaged it
-- make nginx serve that frontend!
-- copy rst-services dependencies in this project
+
+- link nginx volume to local file system to avoid rebuild, recompiling
+
+
+BUGS:
+
+docker doesn't detect changes to volume, so what will be compiled from react and put in 
+server www won't be update
+
+ATTENTION:

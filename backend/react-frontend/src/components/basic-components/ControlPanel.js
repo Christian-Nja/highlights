@@ -17,19 +17,16 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-var react_1 = require("react");
-var axios = require("axios");
+var React = require("react");
+var axios_1 = require("axios");
 var ControlPanel = /** @class */ (function (_super) {
     __extends(ControlPanel, _super);
     function ControlPanel(props) {
         var _this = _super.call(this, props) || this;
         _this.render = function () {
-            return (<div className="columnContainer">
-        <textarea id="textInput" value={_this.state.text} onChange={_this.handleTextChange}></textarea>
-        <button className="button" onClick={_this.handleClick}>
-          Parse
-        </button>
-      </div>);
+            return (React.createElement("div", { className: "columnContainer" },
+                React.createElement("textarea", { id: "textInput", value: _this.state.text, onChange: _this.handleTextChange }),
+                React.createElement("button", { className: "button", onClick: _this.handleClick }, "Parse")));
         };
         /**
          * Function check if a document file is loaded or text is written and in positive case
@@ -46,9 +43,9 @@ var ControlPanel = /** @class */ (function (_super) {
             _this.setState({ text: event.target.value });
         };
         _this.axiosGetTest = function () {
-            axios({
+            axios_1["default"]({
                 method: "get",
-                url: "http://rst-service/test",
+                url: "http://localhost/test-get",
                 responseType: "stream"
             }).then(function (response) {
                 console.log(response);
@@ -60,5 +57,5 @@ var ControlPanel = /** @class */ (function (_super) {
         return _this;
     }
     return ControlPanel;
-}(react_1["default"].Component));
+}(React.Component));
 exports["default"] = ControlPanel;

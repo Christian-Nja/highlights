@@ -59,7 +59,7 @@ export default class ControlPanel extends React.Component<
   axiosGetTest = (): void => {
     axios({
       method: "get",
-      url: "http://rst-service/test",
+      url: "http://localhost:8282/test",
       responseType: "stream"
     }).then(function(response: any) {
       console.log(response);

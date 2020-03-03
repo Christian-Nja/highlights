@@ -7,7 +7,7 @@ import os
 from src.classes import DataSender, FileHandler, RSTMiner
 
 from flask import Flask, request
-
+from flask_cors import CORS, cross_origin
 
 # TODO : add dotenv
 # ==== PARAMS =======
@@ -30,8 +30,11 @@ TEST_FOLDER = 'usr/src/rst-service-api/test'
 
 # == Flask Config == 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-type'
 
 @app.route("/test", methods=["GET"])
+@cross_origin()
 def test_request():
     return("test passed\n")
 
