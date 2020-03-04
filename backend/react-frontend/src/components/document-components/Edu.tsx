@@ -3,7 +3,7 @@ import Word from "./Word";
 
 export interface EduProps {
   score: any;
-  color: any;
+  heat_color: [];
   text: [];
 }
 
@@ -15,12 +15,26 @@ export default class Edu extends React.Component<EduProps, EduState> {
   }
 
   render = () => {
+    const eduSaliencyStyle: {} = this.getEduSaliencyColor();
     return (
-      <div>
+      <p className="rowContainer edu" style={eduSaliencyStyle}>
         {this.props.text.map((word, index) => {
+          console.log(index);
+          if (index === 10) return <br />;
           return <Word word={word} key={index}></Word>;
         })}
-      </div>
+      </p>
     );
+  };
+
+  getEduSaliencyColor = (): {} => {
+    console.log(this.props.heat_color);
+    if (this.props.heat_color.length > 0) {
+      console.log("rgb detected");
+      return { color: `rgb(${this.props.heat_color})` };
+    } else {
+      console.log("no color");
+      return {};
+    }
   };
 }

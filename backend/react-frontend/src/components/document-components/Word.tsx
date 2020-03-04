@@ -10,6 +10,6 @@ export default class Word extends React.Component<WordProps> {
   }
 
   render = () => {
-    return <p>{this.props.word}</p>;
+    return <span className="word">{this.props.word}</span>;
   };
 }

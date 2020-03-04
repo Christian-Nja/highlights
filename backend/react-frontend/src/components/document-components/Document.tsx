@@ -8,8 +8,8 @@ export interface DocumentProps {
     edus: [
       {
         score: any;
-        color: any;
-        text: any;
+        heat_color: [];
+        text: [];
       }
     ];
   };
@@ -25,31 +25,18 @@ export default class Document extends React.Component<
   }
 
   render = () => {
-    console.log(JSON.stringify(this.props.document).length);
     return (
       <div id="documentContainer">
-        {JSON.stringify(this.props.document).length !== 2 ? (
-          <div>
-            {this.props.document.edus.map((edu, index) => {
-              return (
-                <Edu
-                  key={index}
-                  score={edu.score}
-                  color={edu.color}
-                  text={edu.text}
-                ></Edu>
-              );
-            })}
-          </div>
-        ) : (
-          <div>
-            <img
-              className={"img"}
-              src={docImg.default}
-              alt="documents sheets fogli scrivania deck"
-            />
-          </div>
-        )}
+        {this.props.document.edus.map((edu, index) => {
+          return (
+            <Edu
+              key={index}
+              score={edu.score}
+              heat_color={edu.heat_color}
+              text={edu.text}
+            ></Edu>
+          );
+        })}
       </div>
     );
   };
