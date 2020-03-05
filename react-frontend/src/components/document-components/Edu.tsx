@@ -17,10 +17,9 @@ export default class Edu extends React.Component<EduProps, EduState> {
   render = () => {
     const eduSaliencyStyle: {} = this.getEduSaliencyColor();
     return (
-      <p className="rowContainer edu" style={eduSaliencyStyle}>
+      <p className="edu" style={eduSaliencyStyle}>
         {this.props.text.map((word, index) => {
           console.log(index);
-          if (index === 10) return <br />;
           return <Word word={word} key={index}></Word>;
         })}
       </p>

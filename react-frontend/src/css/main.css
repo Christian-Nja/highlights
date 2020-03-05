@@ -86,26 +86,30 @@
 }
 
 .documentScreen {
-  margin-left: 200px;
-  margin-right: 200px;
+  /* margin-left: 200px;
+  margin-right: 200px; */
+  border: solid 5px blue;
 }
 
 #documentContainer {
   margin-top: 30px;
-  margin-right: 5%;
+  margin-right: 400px;
+  margin-left: 100px;
 }
 
 .edu {
   font-family: Helvetica, Segoe, "Segoe UI", Arial, sans-serif;
   font-size: 20px;
-  font-weight: bold;
   letter-spacing: 0.4px;
-  max-width: 500px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  margin-right: 3px;
 }
 
 .word {
-  margin: 1px;
-  display: block;
+  margin-right: 3px;
+  display: inline-block;
 }
 
 #textInput:focus {

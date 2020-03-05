@@ -22,6 +22,7 @@ export interface MainState {
   screen: string;
   isLoading: boolean;
   loaderRef: React.RefObject<HTMLDivElement>;
+  docRef: React.RefObject<HTMLDivElement>;
 }
 
 export class MainPage extends React.Component<MainProps, MainState> {
@@ -40,7 +41,8 @@ export class MainPage extends React.Component<MainProps, MainState> {
       },
       screen: "main",
       isLoading: false,
-      loaderRef: React.createRef()
+      loaderRef: React.createRef(),
+      docRef: React.createRef()
     };
   }
 
@@ -48,26 +50,23 @@ export class MainPage extends React.Component<MainProps, MainState> {
     return (
       <div>
         <Navbar title={"Highlights" /*siteTitle*/}></Navbar>
-
-        {this.state.screen === "main" ? (
-          <div className={"rowContainerJustified mainScreen"}>
-            <SoftwareDescription></SoftwareDescription>
-            <div className={"columnContainer"}>
-              <ControlPanel
-                handleTextAreaClick={this.axiosSubmitText}
-              ></ControlPanel>
-              {this.state.isLoading === true ? (
-                <div ref={this.state.loaderRef}>
-                  <DocumentLoading></DocumentLoading>
-                </div>
-              ) : null}
-            </div>
+        <div className={"rowContainerJustified mainScreen"}>
+          <SoftwareDescription></SoftwareDescription>
+          <div className={"columnContainer"}>
+            <ControlPanel
+              handleTextAreaClick={this.axiosSubmitText}
+            ></ControlPanel>
+            {this.state.isLoading === true ? (
+              <div ref={this.state.loaderRef}>
+                <DocumentLoading></DocumentLoading>
+              </div>
+            ) : null}
           </div>
-        ) : (
-          <div className={"documentScreen"}>
-            <Document document={this.state.document}></Document>
-          </div>
-        )}
+        </div>
+        <div className={"documentScreen rowContainer"} ref={this.state.docRef}>
+          <Document document={this.state.document}></Document>
+          <div> QUI FATTI SALIENTI ESTRATTI DOPO INTEGRAZIONE CON FRED </div>
+        </div>
       </div>
     );
   };
@@ -88,6 +87,8 @@ export class MainPage extends React.Component<MainProps, MainState> {
       screen: "document",
       isLoading: false
     });
+    const doc = this.state.docRef.current;
+    this.scrollToMyRef(doc);
   };
 
   /**
@@ -97,14 +98,18 @@ export class MainPage extends React.Component<MainProps, MainState> {
     await this.setState({
       isLoading: toggle
     });
-    this.scrollToMyRef();
+    const loaderNode = this.state.loaderRef.current;
+    this.scrollToMyRef(loaderNode);
   };
 
-  scrollToMyRef = () => {
-    console.log("scrolling");
-    const loaderNode = this.state.loaderRef.current;
+  scrollToMyRef = (ref: HTMLElement) => {
+    const factor: number = 0.3;
+    const pointer: number =
+      ref.getBoundingClientRect().top +
+      factor *
+        (ref.getBoundingClientRect().bottom - ref.getBoundingClientRect().top);
     window.scrollTo({
-      top: loaderNode.getBoundingClientRect().top,
+      top: pointer,
       behavior: "smooth"
     });
   };

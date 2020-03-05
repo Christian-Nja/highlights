@@ -1,7 +1,7 @@
 import * as React from "react";
 import Edu from "./Edu";
 
-const docImg = require("../../img/documenti.jpeg");
+const gradientImg = require("../../img/gradient.png");
 
 export interface DocumentProps {
   document: {
@@ -37,6 +37,11 @@ export default class Document extends React.Component<
             ></Edu>
           );
         })}
+        <img
+          className={"loadingImg"}
+          src={gradientImg.default}
+          alt="loading image"
+        />{" "}
       </div>
     );
   };
