@@ -1,26 +1,3 @@
-============
-Highlights
-============
-
-Highlights is a simple prototype of a web interface to analyze documents.
-Highlights accept a document, parse it and return the document marked up with
-saliency information. 
-
-Using a blue-red binary gradient blue information is the less important one, 
-while red information is the most important.
-
-
----------------
-Architecture:
-
-Interesting stuff is behind the scenes.
-
-Frontend:
-    interface code is made with react.js and packaged with webpack
-
-Backend:
-    a microservices node backend serve the react.js app. The gateway is a reverse proxy
-    with nginx. Gateway send compiled react frontend while default root is called. Then
-    successive call are routed to a node.js express server. Next may be used to server-side
-    rendering. Backend microservices are orchestrated via docker-compose.
+for r2r you need to download repositories from r2r and build images for 
+feng service and converter
 

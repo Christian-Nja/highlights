@@ -1,10 +1,8 @@
-- ADD saliency extraction to rst-service.
+*** WHEN COMPLETE ***
 
-react -> list-rendering -> render edu and assign color -> for every edu render words
+- CHANGE AXIOS REQUEST FROM LOCAL R2R INSTANCE TO DOCKER-COMPOSE MICROSERVICE ONE
 
-- link nginx volume to local file system to avoid rebuild, recompiling
-
-
+------------------------------------
 BUGS:
 
 docker doesn't detect changes to volume, so what will be compiled from react and put in 

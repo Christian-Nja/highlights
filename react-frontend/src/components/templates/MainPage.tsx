@@ -85,7 +85,7 @@ export class MainPage extends React.Component<MainProps, MainState> {
     let data = res.data;
     this.setState({
       document: data,
-      /*screen: "document",*/
+      screen: "document",
       isLoading: false
     });
   };
