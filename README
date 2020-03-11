@@ -1,3 +1,33 @@
-for r2r you need to download repositories from r2r and build images for 
-feng service and converter
+HIGHLIGHTS
+==========
+
+Web interface that query R2R to extract saliency from documents
+
+to build it:
+
+$ clone <repo>
+$ cd highlights
+$ docker-compose build
+
+
+you can access the tool at:
+
+http://localhost:8282/index.html
+
+
+==========================
+
+ATTENTION: code deployment isn't complete it may not to work
+
+
+ARCHITECTURE:
+--------------
+
+nginx inverse-proxy serve a react.js frontend
+
+react.js frontend query R2R microservice and FRED remote api to parse document
+docker-compose orchestrate the comunication
+
+
+
 

@@ -1,11 +1,14 @@
+*********************
 *** WHEN COMPLETE ***
+*********************
 
-- CHANGE AXIOS REQUEST FROM LOCAL R2R INSTANCE TO DOCKER-COMPOSE MICROSERVICE ONE
 
-------------------------------------
+ - CHANGE AXIOS REQUEST FROM LOCAL R2R INSTANCE TO DOCKER-COMPOSE MICROSERVICE ONE
+
+======================================================================================
+
 BUGS:
 
 docker doesn't detect changes to volume, so what will be compiled from react and put in 
 server www won't be update
 
-ATTENTION:
