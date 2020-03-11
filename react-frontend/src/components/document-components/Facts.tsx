@@ -1,5 +1,7 @@
 import * as React from "react";
 
+const graphImg = require("../../img/graph1.png");
+
 export interface FactsProps {
   facts: [{ agent: string; patient: string; event: string; location: string }];
 }
@@ -11,17 +13,17 @@ export default class Word extends React.Component<FactsProps> {
 
   render = () => {
     return (
-      <div className="facts">
-        {this.props.facts.map((fact, index) => {
-          return (
-            <div key={index}>
-              <div>Event: open_1</div>
-              <div>Agent: Texas_Instrument_Japan</div>
-              <div>Theme: plant_1</div>
-              <div>Location: Japan</div>
-            </div>
-          );
-        })}
+      <div>
+        <figcaption className="graphCaption">
+          Important facts and implicated agents
+        </figcaption>
+        <figure className={"graphFigure"}>
+          <img
+            className={"graphImg"}
+            src={graphImg.default}
+            alt="loading image"
+          />
+        </figure>
       </div>
     );
   };

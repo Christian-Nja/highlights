@@ -37,11 +37,17 @@ export default class Document extends React.Component<
             ></Edu>
           );
         })}
-        <img
-          className={"gradientImg"}
-          src={gradientImg.default}
-          alt="loading image"
-        />{" "}
+        <figure className={"gradientFigure"}>
+          <img
+            className={"gradientImg"}
+            src={gradientImg.default}
+            alt="loading image"
+          />
+          <figcaption className="magnitude">
+            <span className="inf">0</span> <span>saliency</span>
+            <span className="sup">1</span>
+          </figcaption>
+        </figure>
       </div>
     );
   };

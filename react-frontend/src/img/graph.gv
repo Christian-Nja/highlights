@@ -1,0 +1,8 @@
+digraph G {
+	node [shape=box,fontcolor=white,fillcolor=purple4,style=filled, fontname=Consolas]
+	edge [fontname=Consolas]
+	open_1 -> Texas_Instrument_Japan [label="agent"]
+	open_1 -> plant_1 [label="theme"]
+	open_1 -> South_Korea [label="location"]
+	open_1 [shape=circle,fillcolor=gold2,style=filled,fontcolor=black]
+}

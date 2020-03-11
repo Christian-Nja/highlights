@@ -18,11 +18,13 @@ export default class Word extends React.Component<SoftwareProps> {
         <div className="sWDesc">
           {" "}
           You can use Highlights web interface to parse a document and extract
-          salient information. Just write some text above or insert a plain text
-          file. Highlights will parse it with the help of R2R and FRED. R2R
-          performs discourse parsing. FRED do semantic parsing. You will get
-          back an analyzed text, annotated with saliency. Salient parts are
-          colored with red, while less important one goes to blue.
+          salient information. To try it just write some text or paste a
+          document in the blocknotes on the right. Highlights will parse it with
+          the help of semantic tools R2R and FRED. R2R performs discourse
+          parsing. It segments the document according to RST theory discourse
+          structure. FRED perform semantic parsing. You will get back an
+          analyzed text, annotated with saliency. Salient parts are colored with
+          red, while less important one goes to blue.
         </div>
         <br />
         <img
@@ -42,14 +44,13 @@ export default class Word extends React.Component<SoftwareProps> {
         />
         <div className="sWDesc">
           <br /> You can use Highlights web interface to parse a document and
-          extract salient information. Just write some text above or insert a
-          plain text file. Highlights will parse it with the help of R2R and
-          FRED. R2R performs discourse parsing. FRED do semantic parsing. You
-          will get back an analyzed text, annotated with saliency. Salient parts
-          are colored with red, while less important one goes to blue. FRED. R2R
-          performs discourse parsing. FRED do semantic parsing. You will get
-          back an analyzed text, annotated with saliency. Salient parts are
-          colored with red, while less important one goes to blue.
+          extract salient information. To try it just write some text or paste a
+          document in the blocknotes on the right. Highlights will parse it with
+          the help of semantic tools R2R and FRED. R2R performs discourse
+          parsing. It segments the document according to RST theory discourse
+          structure. FRED perform semantic parsing. You will get back an
+          analyzed text, annotated with saliency. Salient parts are colored with
+          red, while less important one goes to blue.
         </div>
       </div>
     );
