@@ -19,7 +19,6 @@ export default class Edu extends React.Component<EduProps, EduState> {
     return (
       <p className="edu" style={eduSaliencyStyle}>
         {this.props.text.map((word, index) => {
-          console.log(index);
           return <Word word={word} key={index}></Word>;
         })}
       </p>
@@ -27,12 +26,9 @@ export default class Edu extends React.Component<EduProps, EduState> {
   };
 
   getEduSaliencyColor = (): {} => {
-    console.log(this.props.heat_color);
     if (this.props.heat_color.length > 0) {
-      console.log("rgb detected");
       return { color: `rgb(${this.props.heat_color})` };
     } else {
-      console.log("no color");
       return {};
     }
   };

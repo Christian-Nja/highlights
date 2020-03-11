@@ -5,6 +5,7 @@ import ControlPanel from "../basic-components/ControlPanel";
 import Document from "../document-components/Document";
 import SoftwareDescription from "../basic-components/SoftwareDescription";
 import DocumentLoading from "../document-components/DocumentLoading";
+import Facts from "../document-components/Facts";
 
 import axios from "axios";
 
@@ -19,6 +20,8 @@ export interface MainState {
       }
     ];
   };
+
+  facts: [{ agent: string; patient: string; event: string; location: null }];
   screen: string;
   isLoading: boolean;
   loaderRef: React.RefObject<HTMLDivElement>;
@@ -42,7 +45,8 @@ export class MainPage extends React.Component<MainProps, MainState> {
       screen: "main",
       isLoading: false,
       loaderRef: React.createRef(),
-      docRef: React.createRef()
+      docRef: React.createRef(),
+      facts: [{ agent: null, patient: null, event: null, location: null }]
     };
   }
 
@@ -54,7 +58,7 @@ export class MainPage extends React.Component<MainProps, MainState> {
           <SoftwareDescription></SoftwareDescription>
           <div className={"columnContainer"}>
             <ControlPanel
-              handleTextAreaClick={this.axiosSubmitText}
+              handleTextAreaClick={this.axiosSubmitRequest}
             ></ControlPanel>
             {this.state.isLoading === true ? (
               <div ref={this.state.loaderRef}>
@@ -63,18 +67,31 @@ export class MainPage extends React.Component<MainProps, MainState> {
             ) : null}
           </div>
         </div>
-        <div className={"documentScreen rowContainer"} ref={this.state.docRef}>
-          <Document document={this.state.document}></Document>
-          <div> QUI FATTI SALIENTI ESTRATTI DOPO INTEGRAZIONE CON FRED </div>
-        </div>
+        {this.state.screen === "document" ? (
+          <div
+            className={"documentScreen rowContainer"}
+            ref={this.state.docRef}
+          >
+            <Document document={this.state.document}></Document>
+            <div className={"factContainer"}>
+              {" "}
+              <Facts facts={this.state.facts}></Facts>
+            </div>
+          </div>
+        ) : null}
       </div>
     );
   };
 
-  axiosSubmitText = async (test: string) => {
+  axiosSubmitRequest = (text: string) => {
+    this.axiosSubmitText(text);
+    this.axiosSubmitFacts(text);
+  };
+
+  axiosSubmitText = async (text: string) => {
     let GATEWAY: string = "http://localhost:5050/saliency";
     let formData = new FormData();
-    formData.append("input", test);
+    formData.append("input", text);
     this.switchLoadingBanner(true);
     let res = await axios.post(GATEWAY, formData, {
       headers: {
@@ -89,6 +106,24 @@ export class MainPage extends React.Component<MainProps, MainState> {
     });
     const doc = this.state.docRef.current;
     this.scrollToMyRef(doc);
+  };
+
+  axiosSubmitFacts = async (text: string) => {
+    let GATEWAY: string = "http://localhost:5050/facts";
+    let formData = new FormData();
+    let score = "0.99";
+    formData.append("input", text);
+    formData.append("s", score);
+    let res = await axios.post(GATEWAY, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    });
+    let data = res.data.important_facts;
+    // this.setState({
+    //   facts: data
+    // });
+    // console.log(data);
   };
 
   /**

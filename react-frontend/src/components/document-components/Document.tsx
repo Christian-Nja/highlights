@@ -38,7 +38,7 @@ export default class Document extends React.Component<
           );
         })}
         <img
-          className={"loadingImg"}
+          className={"gradientImg"}
           src={gradientImg.default}
           alt="loading image"
         />{" "}

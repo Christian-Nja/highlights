@@ -75,6 +75,15 @@
   display: block;
 }
 
+.gradientImg {
+  margin: auto;
+  width: 230px;
+  height: 30px;
+  border-radius: 2%;
+  margin-bottom: 30px;
+  display: block;
+}
+
 .mainScreen {
   margin-top: 50px;
   margin-left: 100px;
@@ -95,6 +104,11 @@
   margin-top: 30px;
   margin-right: 400px;
   margin-left: 100px;
+  border: solid 5px red;
+}
+
+.factContainer {
+  border: solid 5px red;
 }
 
 .edu {
